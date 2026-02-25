@@ -2,22 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Woodates Static Package</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ── RESET ── */
   html {
-    margin: 0; padding: 0; width: 100%; height: 100%;
-    overflow-y: scroll;
+    margin: 0; padding: 0; width: 100%; height: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   body {
-    margin: 0; padding: 0 10px 40px; width: 100%; height: auto;
+    margin: 0; padding: 0 10px 40px; width: 100%; min-height: 100%;
     font-family: 'DM Sans', sans-serif;
     background: transparent;
     color: #1a1a18;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
+    overflow-x: hidden;
+    touch-action: pan-y;
   }
   
   *, *::before, *::after { box-sizing: inherit; }
@@ -217,6 +220,27 @@
   .port-imgs.layout-2 img { width: 100%; height: 210px; object-fit: cover; display: block; }
   .port-imgs.layout-4 { grid-template-columns: 1fr 1fr; }
   .port-imgs.layout-4 img { width: 100%; height: 180px; object-fit: cover; display: block; }
+  .port-imgs img { cursor: zoom-in; }
+
+  .img-lightbox {
+    position: fixed; inset: 0; z-index: 9999;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(0, 0, 0, 0.86);
+    padding: 20px;
+  }
+  .img-lightbox.open { display: flex; }
+  .img-lightbox img {
+    max-width: min(96vw, 1200px);
+    max-height: 90vh;
+    width: auto; height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  }
+  .img-lightbox-close {
+    position: absolute; top: 14px; right: 16px;
+    border: 0; background: transparent; color: #fff;
+    font-size: 32px; line-height: 1; cursor: pointer;
+  }
 
   .port-breakdown {
     display: flex; flex-wrap: wrap; gap: 0;
@@ -312,6 +336,7 @@
     .why-header h2 { font-size: 22px; }
     .why-item { padding: 14px 14px; font-size: 12px; }
     .address-box { padding: 14px 14px; }
+    .img-lightbox-close { font-size: 40px; top: 8px; right: 10px; }
   }
 
   @media (max-width: 360px) {
@@ -522,10 +547,10 @@
         <span class="port-pill">Integrated Study Nook</span>
       </div>
       <div class="port-imgs layout-4">
-        <img src="images/kempas-creamy-1.png" alt="Kempas Creamy 1" loading="eager">
-        <img src="images/kempas-creamy-2.png" alt="Kempas Creamy 2" loading="eager">
-        <img src="images/kempas-creamy-3.png" alt="Kempas Creamy 3" loading="eager">
-        <img src="images/kempas-creamy-4.png" alt="Kempas Creamy 4" loading="eager">
+        <img src="images/kempas-creamy-1.png" alt="Kempas Creamy 1" loading="lazy">
+        <img src="images/kempas-creamy-2.png" alt="Kempas Creamy 2" loading="lazy">
+        <img src="images/kempas-creamy-3.png" alt="Kempas Creamy 3" loading="lazy">
+        <img src="images/kempas-creamy-4.png" alt="Kempas Creamy 4" loading="lazy">
       </div>
       <div class="port-breakdown">
         <div class="breakdown-col"><span class="breakdown-label">Base Package</span><span class="breakdown-val">$32,888 Signature</span></div>
@@ -550,10 +575,10 @@
         <span class="port-pill">Cove &amp; Track Lighting</span>
       </div>
       <div class="port-imgs layout-4">
-        <img src="images/kallang-1.png" alt="Kallang 1" loading="eager">
-        <img src="images/kallang-2.png" alt="Kallang 2" loading="eager">
-        <img src="images/kallang-3.png" alt="Kallang 3" loading="eager">
-        <img src="images/kallang-4.png" alt="Kallang 4" loading="eager">
+        <img src="images/kallang-1.png" alt="Kallang 1" loading="lazy">
+        <img src="images/kallang-2.png" alt="Kallang 2" loading="lazy">
+        <img src="images/kallang-3.png" alt="Kallang 3" loading="lazy">
+        <img src="images/kallang-4.png" alt="Kallang 4" loading="lazy">
       </div>
       <div class="port-breakdown">
         <div class="breakdown-col"><span class="breakdown-label">Base Package</span><span class="breakdown-val">$32,888 Signature</span></div>
@@ -578,10 +603,10 @@
         <span class="port-pill">Full Kitchen Hack &amp; Retile</span>
       </div>
       <div class="port-imgs layout-4">
-        <img src="images/kempas-contemporary-1.png" alt="Kempas Contemporary 1" loading="eager">
-        <img src="images/kempas-contemporary-2.png" alt="Kempas Contemporary 2" loading="eager">
-        <img src="images/kempas-contemporary-3.png" alt="Kempas Contemporary 3" loading="eager">
-        <img src="images/kempas-contemporary-4.png" alt="Kempas Contemporary 4" loading="eager">
+        <img src="images/kempas-contemporary-1.png" alt="Kempas Contemporary 1" loading="lazy">
+        <img src="images/kempas-contemporary-2.png" alt="Kempas Contemporary 2" loading="lazy">
+        <img src="images/kempas-contemporary-3.png" alt="Kempas Contemporary 3" loading="lazy">
+        <img src="images/kempas-contemporary-4.png" alt="Kempas Contemporary 4" loading="lazy">
       </div>
       <div class="port-breakdown">
         <div class="breakdown-col"><span class="breakdown-label">Base Package</span><span class="breakdown-val">$32,888 Signature</span></div>
@@ -606,10 +631,10 @@
         <span class="port-pill">Curved Lower Cabinet</span>
       </div>
       <div class="port-imgs layout-4">
-        <img src="images/punggol-1.png" alt="Punggol 1" loading="eager">
-        <img src="images/punggol-2.png" alt="Punggol 2" loading="eager">
-        <img src="images/punggol-3.png" alt="Punggol 3" loading="eager">
-        <img src="images/punggol-4.png" alt="Punggol 4" loading="eager">
+        <img src="images/punggol-1.png" alt="Punggol 1" loading="lazy">
+        <img src="images/punggol-2.png" alt="Punggol 2" loading="lazy">
+        <img src="images/punggol-3.png" alt="Punggol 3" loading="lazy">
+        <img src="images/punggol-4.png" alt="Punggol 4" loading="lazy">
       </div>
       <div class="port-breakdown">
         <div class="breakdown-col"><span class="breakdown-label">Base Package</span><span class="breakdown-val">$32,888 Signature</span></div>
@@ -642,6 +667,11 @@
 
 </div>
 
+<div class="img-lightbox" id="img-lightbox" role="dialog" aria-modal="true" aria-label="Expanded portfolio image">
+  <button class="img-lightbox-close" id="img-lightbox-close" aria-label="Close image">×</button>
+  <img id="img-lightbox-image" src="" alt="Expanded portfolio image">
+</div>
+
 <script>
   function toggle(questionEl) {
     var item = questionEl.closest('.faq-item');
@@ -649,6 +679,36 @@
     document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
     if (!isOpen) item.classList.add('open');
   }
+
+  (function initPortfolioLightbox() {
+    var lightbox = document.getElementById('img-lightbox');
+    var lightboxImage = document.getElementById('img-lightbox-image');
+    var closeBtn = document.getElementById('img-lightbox-close');
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.port-imgs img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || 'Expanded portfolio image';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') closeLightbox();
+    });
+  })();
 </script>
 </body>
 </html>
