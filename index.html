@@ -8,7 +8,8 @@
 <style>
   /* ── RESET ── */
   html {
-    margin: 0; padding: 0; width: 100%; height: auto;
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    overflow-y: scroll;
   }
   body {
     margin: 0; padding: 0 10px 40px; width: 100%; height: auto;
@@ -648,15 +649,6 @@
     document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
     if (!isOpen) item.classList.add('open');
   }
-
-  // Tell Google Sites the full page height once — so iframe is tall enough with no internal scroll
-  function sendHeight() {
-    window.parent.postMessage({ frameHeight: document.documentElement.scrollHeight }, '*');
-  }
-  window.addEventListener('load', function() {
-    sendHeight();
-    setTimeout(sendHeight, 2000); // second pass after images fully render
-  });
 </script>
 </body>
 </html>
