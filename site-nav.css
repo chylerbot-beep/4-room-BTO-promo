@@ -1,0 +1,9 @@
+.menu .site-links{display:grid;gap:5px;overflow-y:auto;overscroll-behavior:contain;padding-bottom:14px}
+.menu .site-links>a,.menu .nav-group>summary{font-size:clamp(2.15rem,9.5vw,5.5rem);line-height:.98;letter-spacing:-.055em}
+.menu .nav-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.menu .nav-group>summary::-webkit-details-marker{display:none}
+.menu .nav-group>summary:after{content:'+';font-size:.55em;font-weight:300;letter-spacing:0}
+.menu .nav-group[open]>summary:after{content:'−'}
+.menu .nav-sub{display:grid;gap:8px;padding:12px 0 14px 18px;border-left:1px solid rgba(255,255,255,.25)}
+.menu .nav-sub a{font-size:clamp(.95rem,3.5vw,1.35rem);line-height:1.2;letter-spacing:.04em;text-transform:uppercase;color:#aeb0a8}
+@media(min-width:760px){.menu .site-links>a,.menu .nav-group>summary{font-size:clamp(2.7rem,5.5vw,5rem)}.menu .nav-sub{grid-template-columns:repeat(3,max-content);gap:24px;padding-left:24px}}
