@@ -1,0 +1,25 @@
+(()=>{
+  const projects=window.WOODATES_PROJECTS||[];
+  if(!projects.length)return;
+  const gallery=document.createElement('div');
+  gallery.className='gallery';
+  gallery.setAttribute('role','dialog');
+  gallery.setAttribute('aria-modal','true');
+  gallery.setAttribute('aria-hidden','true');
+  gallery.setAttribute('aria-label','Project gallery');
+  gallery.innerHTML=`<div class="gallery-stage"><button class="gallery-close" type="button" aria-label="Close gallery">×</button><button class="gallery-nav gallery-prev" type="button" aria-label="Previous photograph">‹</button><img class="gallery-image" alt=""><button class="gallery-nav gallery-next" type="button" aria-label="Next photograph">›</button><div class="gallery-meta"><span class="gallery-address"></span><strong class="gallery-name"></strong><span class="gallery-count"></span></div></div>`;
+  document.body.appendChild(gallery);
+  const stage=gallery.querySelector('.gallery-stage'),image=gallery.querySelector('.gallery-image'),address=gallery.querySelector('.gallery-address'),name=gallery.querySelector('.gallery-name'),count=gallery.querySelector('.gallery-count'),close=gallery.querySelector('.gallery-close'),prev=gallery.querySelector('.gallery-prev'),next=gallery.querySelector('.gallery-next');
+  let active=null,index=0,returnFocus=null,touchStart=null;
+  const current=()=>projects.find(p=>p.id===active);
+  const preload=i=>{const p=current();if(!p)return;const loader=new Image();loader.src=p.images[(i+p.images.length)%p.images.length]};
+  const render=()=>{const p=current();if(!p)return;index=(index+p.images.length)%p.images.length;image.classList.add('changing');setTimeout(()=>{image.src=p.images[index];image.alt=`${p.name} at ${p.address}, photograph ${index+1} of ${p.images.length}`;address.textContent=`${p.property} · ${p.address}`;name.textContent=p.name;count.textContent=String(index+1).padStart(2,'0')+' / '+String(p.images.length).padStart(2,'0');image.classList.remove('changing');preload(index+1)},90)};
+  const move=delta=>{index+=delta;render()};
+  const open=(id,trigger)=>{active=id;index=0;returnFocus=trigger;gallery.classList.add('open');gallery.setAttribute('aria-hidden','false');document.body.classList.add('gallery-open');render();close.focus()};
+  const shut=()=>{gallery.classList.remove('open');gallery.setAttribute('aria-hidden','true');document.body.classList.remove('gallery-open');image.removeAttribute('src');if(returnFocus)returnFocus.focus();active=null};
+  document.querySelectorAll('.project-trigger').forEach(trigger=>trigger.addEventListener('click',()=>open(trigger.dataset.project,trigger)));
+  close.addEventListener('click',shut);prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));gallery.addEventListener('click',e=>{if(e.target===gallery)shut()});
+  stage.addEventListener('touchstart',e=>{const t=e.changedTouches[0];touchStart={x:t.clientX,y:t.clientY}},{passive:true});
+  stage.addEventListener('touchend',e=>{if(!touchStart)return;const t=e.changedTouches[0],dx=t.clientX-touchStart.x,dy=t.clientY-touchStart.y;touchStart=null;if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.2)move(dx<0?1:-1)},{passive:true});
+  document.addEventListener('keydown',e=>{if(!gallery.classList.contains('open'))return;if(e.key==='Escape')shut();else if(e.key==='ArrowLeft')move(-1);else if(e.key==='ArrowRight')move(1);else if(e.key==='Tab'){const controls=[close,prev,next],first=controls[0],last=controls[controls.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+})();
