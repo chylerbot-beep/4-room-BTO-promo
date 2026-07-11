@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="project-gallery.css" rel="stylesheet">
+  <link href="site-nav.css" rel="stylesheet">
   <style>
     :root{--ink:#171916;--paper:#efebe2;--sand:#d9d0c0;--muted:#77786f;--line:rgba(23,25,22,.2);--pad:clamp(20px,5vw,72px)}
     *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--ink)}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;-webkit-font-smoothing:antialiased}body.menu-open{overflow:hidden}a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;width:100%}
@@ -27,12 +28,13 @@
     .cta{min-height:82svh;background:#b9ad9b;padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between}.cta h2{font-size:clamp(3.4rem,12vw,9rem);font-weight:400;line-height:.84;letter-spacing:-.07em;margin:50px 0;max-width:1100px}.cta-link{border-top:1px solid var(--ink);padding:22px 0;display:flex;justify-content:space-between;align-items:center;font-size:clamp(1rem,2.5vw,1.5rem)}footer{background:#151713;color:#9ea098;padding:34px var(--pad) calc(34px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:20px;font-size:.67rem;letter-spacing:.12em;text-transform:uppercase}
     .reveal{opacity:0;transform:translateY(30px);transition:.75s}.reveal.in{opacity:1;transform:none}
     @media(min-width:760px){.back{display:block}.price{grid-template-columns:1.15fr .85fr;align-items:end}.scope-head,.upgrade-head,.reviews-head{grid-template-columns:1.25fr .75fr;align-items:end}.scope-item{grid-template-columns:80px .9fr 1.1fr;align-items:start}.scope-item h3{margin:0}.scope-item p{grid-column:auto}.cost-row{grid-template-columns:1fr 1.4fr .5fr;align-items:start}.quotes{grid-template-columns:1fr 1fr}.project{min-height:100vh}.project-info{max-width:900px}.milestone{grid-template-columns:80px 1fr auto}.stories-intro{grid-template-columns:1.25fr .75fr;align-items:end}}
+    @media(min-width:760px){.hero h1{font-size:clamp(4.25rem,7vw,6.5rem);max-width:900px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none}.project>img{transition:none}}
   </style>
 </head>
 <body>
   <header class="header"><a class="brand" href="index.html">Woodates</a><a class="back" href="index.html">← Portfolio</a><button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span></button></header>
-  <aside class="menu" aria-hidden="true"><nav><a href="#package">The package</a><a href="#homes">Completed homes</a><a href="#payment">Payment</a><a href="#questions">Questions</a><a href="#contact">Planning call</a></nav><small>4-room BTO · Fixed package price</small></aside>
+  <aside class="menu" aria-hidden="true"><nav class="site-links"><a href="index.html">Home</a><a href="portfolio-immersive.html">Projects</a><details class="nav-group"><summary>Start Here</summary><div class="nav-sub"><a href="3-room-immersive.html">3-room package</a><a href="4-room-immersive.html">4-room package</a><a href="5-room-immersive.html">5-room package</a></div></details><a href="about-immersive.html">About Us</a><a href="contact-immersive.html">Contact Us</a></nav><small>4-room BTO · Fixed package price</small></aside>
   <main>
     <section class="hero" id="top"><img src="images/kempas-creamy-1.png" alt="Soft creamy Woodates 4-room BTO interior"><div class="hero-copy"><span class="eyebrow">Woodates · 4-room BTO package</span><h1>A complete home.<br>A clear price.</h1><div class="hero-meta"><span>Designed and built<br>by one accountable team</span><span class="scroll">Scroll</span></div></div></section>
     <section class="price" id="package"><div class="price-copy"><span class="eyebrow">Fixed package price</span><h2 class="reveal">The essentials, thoughtfully resolved.</h2><p class="reveal">A complete design-and-build foundation for a 4-room BTO—with the storage, surfaces and everyday functions most families need already considered.</p></div><div class="price-number"><small>Woodates 4-room signature package</small><strong>$32,888</strong><span class="eyebrow">Your optional additions are agreed before work begins</span></div></section>
