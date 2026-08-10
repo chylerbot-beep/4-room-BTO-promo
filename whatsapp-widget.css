@@ -1,11 +1,11 @@
 .whatsapp-widget {
   position: fixed;
   right: max(20px, calc(16px + env(safe-area-inset-right)));
-  bottom: max(20px, calc(16px + env(safe-area-inset-bottom)));
+  bottom: max(28px, calc(20px + env(safe-area-inset-bottom)));
   z-index: 2147483647;
   display: grid;
-  width: 58px;
-  height: 58px;
+  width: 64px;
+  height: 64px;
   place-items: center;
   visibility: visible;
   opacity: 1;
@@ -34,22 +34,22 @@
 }
 
 .whatsapp-widget svg {
-  width: 31px;
-  height: 31px;
+  width: 34px;
+  height: 34px;
   fill: currentColor;
 }
 
 @media (max-width: 480px) {
   .whatsapp-widget {
     right: max(14px, calc(10px + env(safe-area-inset-right)));
-    bottom: max(14px, calc(10px + env(safe-area-inset-bottom)));
-    width: 52px;
-    height: 52px;
+    bottom: max(36px, calc(28px + env(safe-area-inset-bottom)));
+    width: 60px;
+    height: 60px;
   }
 
   .whatsapp-widget svg {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 }
 
