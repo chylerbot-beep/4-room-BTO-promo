@@ -2,11 +2,14 @@
   position: fixed;
   right: max(20px, calc(16px + env(safe-area-inset-right)));
   bottom: max(20px, calc(16px + env(safe-area-inset-bottom)));
-  z-index: 100;
+  z-index: 2147483647;
   display: grid;
   width: 58px;
   height: 58px;
   place-items: center;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
   color: #fff;
   background: #25d366;
   border-radius: 50%;
